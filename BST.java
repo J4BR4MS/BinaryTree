@@ -167,19 +167,21 @@ public class BST {
         return recurse(Integer.MIN_VALUE, Integer.MAX_VALUE, getRoot());
     }
     private boolean recurse(int min, int max, BSTNode b) {
-        // If the node exists
+        // Base case: ff the node does not exist
         if (b == null) {
             return true;
         }
-        // If the value of the node is equal or less than the minimum value (or vice versa with the max), return false
+        // Base case #2: If the value of the node is equal/less than the minimum value 
+        // (or vice versa with the max), return false
         if (b.getVal() <= min || b.getVal() >= max) {
             return false;
         }
 
-        // Recurse
+        // Recurse: explore both the left and right paths with the minimum and maximum values
         if(recurse(min, b.getVal(), b.getLeft()) && recurse(b.getVal(), max, b.getRight())){
             return true;
         }
+        // If they both are not true, the tree is incorrect
         else
         {
             return false;
